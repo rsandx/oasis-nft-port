@@ -50,13 +50,14 @@ describe("NFTMarket", function() {
     items = await nftMarketplace.connect(buyerAddress).fetchMarketItems()
     expect(items.length).to.equal(2)
   
-    /* execute sale of am item to another user */
+    /* execute sale of an item to another user */
     await nftMarketplace.connect(buyerAddress).createMarketSale(1, { value: auctionPrice })
+    /* the user creates a new token so now owns 2 */
     await nftMarketplace.connect(buyerAddress).createToken("https://www.otherstokenlocation.com")
     items = await nftMarketplace.connect(buyerAddress).fetchMyNFTs()
     expect(items.length).to.equal(2)
   
-    /* query for and return the unsold items */
+    /* query for and return the item still available to buy by the user */
     items = await nftMarketplace.connect(buyerAddress).fetchMarketItems()
     expect(items.length).to.equal(1)
     items = await Promise.all(items.map(async i => {
