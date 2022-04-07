@@ -33,11 +33,11 @@ describe("NFTMarket", function() {
     }))
     console.log('minted items: ', items)
 
-    /* list the tokens for sale */
+    /* list the items for sale */
     await nftMarketplace.listToken(1, auctionPrice)
     await nftMarketplace.listToken(2, auctionPrice)
 
-    /* query for and return the minted items */
+    /* query for and return the listed items */
     items = await nftMarketplace.fetchMyListings()
     expect(items.length).to.equal(2)
     await nftMarketplace.delistToken(2)
@@ -45,12 +45,12 @@ describe("NFTMarket", function() {
     expect(items.length).to.equal(1)
     await nftMarketplace.listToken(2, auctionPrice)
 
+    /* query for and return the items available to buy by another user */
     const [_, buyerAddress] = await ethers.getSigners()
-    /* query for and return the items available for sale */
     items = await nftMarketplace.connect(buyerAddress).fetchMarketItems()
     expect(items.length).to.equal(2)
   
-    /* execute sale of token to another user */
+    /* execute sale of am item to another user */
     await nftMarketplace.connect(buyerAddress).createMarketSale(1, { value: auctionPrice })
     await nftMarketplace.connect(buyerAddress).createToken("https://www.otherstokenlocation.com")
     items = await nftMarketplace.connect(buyerAddress).fetchMyNFTs()
