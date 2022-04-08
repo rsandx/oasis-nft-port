@@ -2,7 +2,7 @@
 
 The Smart Contract to mint and transact NFTs in AI Blockchain Art NFT Portal for Oasis Network
 
-A NFT can be minted by anyone with basic descriptions and a file uploaded to IPFS, then it can be listed with a price for sale in the marketplace. The seller can also cancel the sale using the delist method, then list it again with a different price.
+A NFT can be minted by anyone with basic descriptions and a file uploaded to IPFS, then it can be listed with a price for sale in the marketplace. The seller can also cancel the sale using the delist method, then list it again with a different price. A live demo is available at https://aiblockchain.art/nftportal/, please add Emerald Testnet to MetaMask and connect with a test account if you want to try out minting NFTs and making transactions. 
 
 ## Install dependencies
 
